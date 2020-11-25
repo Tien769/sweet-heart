@@ -27,6 +27,8 @@
 
 ## Frontend Installation
 
+---
+
 1. cd into /sweet-heart/react
 2. Run command:
 
