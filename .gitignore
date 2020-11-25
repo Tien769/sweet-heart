@@ -1,0 +1,5 @@
+**/node_modules/
+**/temp.sqlite
+**/yarn-error.log
+**/*.env
+**/.vscode
