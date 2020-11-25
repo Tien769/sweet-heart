@@ -8,7 +8,7 @@
 
 1. Install [NodeJS](https://nodejs.org/en/download/)
 2. Install [Yarn](https://classic.yarnpkg.com/latest.msi)
-3. Create a file with path /sweet-heart/express/.env
+3. Create a file with path /sweet-heart/express/.env and add the following:
 
    ```env
    NODE_ENV=development
@@ -22,5 +22,7 @@
 4. cd into /sweet-heart/express and run:
 
    ```shell
-    yarn run compile && yarn run watch:build
+    yarn install
+    yarn run compile
+    yarn run watch:build
    ```
