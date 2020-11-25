@@ -1,10 +1,8 @@
-# EXPRESS BACKEND
+# SWEET HEART: PASTRIES E-COMMERCE WEBSITE
 
-## Installation
+## Backend Installation
 
 ---
-
-### Windows 10
 
 1. Install [NodeJS](https://nodejs.org/en/download/)
 2. Install [Yarn](https://classic.yarnpkg.com/latest.msi)
@@ -25,4 +23,14 @@
     yarn install
     yarn run compile
     yarn run watch:build
+   ```
+
+## Frontend Installation
+
+1. cd into /sweet-heart/react
+2. Run command:
+
+   ```shell
+   yarn install
+   yarn start
    ```
