@@ -30,7 +30,13 @@
 ---
 
 1. cd into /sweet-heart/react
-2. Run command:
+2. Create a file with path /sweet-heart/react/.env. Add the follow to the file:
+
+   ```env
+   REACT_APP_API_SERVER='http://localhost:3001'
+   ```
+
+3. Run command:
 
    ```shell
    yarn install

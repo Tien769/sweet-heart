@@ -19,7 +19,7 @@ const sessionManager = session({
 	store: new sqliteStore({
 		driver: sqlite3.Database,
 		path: './temp.sqlite',
-		ttl: 1 * 365 * 24 * 60 * 60 * 1000,
+		ttl: 60 * 60 * 1000,
 	}),
 });
 

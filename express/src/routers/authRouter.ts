@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import { NextFunction, Request, Response } from 'express';
 import { PlainObject, ResponseMessage } from '../_types';
-import * as AuthService from '../services/authentication';
+import * as AuthService from '../services/authenticationService';
 
-const authRouter = Router();
+const router = Router();
 
 //
 // ------------------------------------------MIDDLEWARES------------------------------------------
@@ -48,14 +48,14 @@ const updateSession = (req: Request, res: Response, next: NextFunction) => {
 
 //
 // ------------------------------------------ROUTES DEFINITION------------------------------------------
-authRouter.get('/', (req, res, next) => {
-	(res.locals.msg as ResponseMessage).addData({
+router.get('/', (req, res, next) => {
+	(res.locals.msg as ResponseMessage).data = {
 		authenticated: (req.session as PlainObject)?.user ? true : false,
-	});
+	};
 	return next();
 });
 
-authRouter.post(
+router.post(
 	'/signup',
 	parseUserAuthentication,
 	(req, res, next) => {
@@ -71,7 +71,7 @@ authRouter.post(
 	updateSession
 );
 
-authRouter.post(
+router.post(
 	'/signin',
 	parseUserAuthentication,
 	(req, res, next) => {
@@ -86,7 +86,7 @@ authRouter.post(
 	updateSession
 );
 
-authRouter.get(
+router.get(
 	'/signout',
 	checkAuthenticatedRequirement,
 	// Call updateSession() to sign user out
@@ -102,4 +102,4 @@ authRouter.get(
 	updateSession
 );
 
-export default authRouter;
+export { router as authRouter };
