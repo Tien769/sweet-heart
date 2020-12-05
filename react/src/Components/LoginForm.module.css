@@ -1,0 +1,14 @@
+.form-inner {
+    /* display: block;
+    position: relative; */
+    width: 100vw;
+    background-color: "#000" ;
+    height: 100vh, 
+}
+
+.formView {
+    position: relative; 
+    width: 100vw;
+    background-color: red;
+    height: 100vh, 
+}
