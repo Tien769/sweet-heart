@@ -142,3 +142,23 @@ searchProductAsync({
 });
 // ...
 ```
+
+### 6. getProductImageUrl
+
+---
+
+Trả về đường dẫn hình ảnh của sản phẩm. Truyền giá trị trả về cho tag **_img_** để hiển thị hình ảnh.
+
+Cú pháp hàm nhận một tham số là id hình ảnh của sản phẩm. Id này có thể được tìm thấy trong dữ liệu trả về của **_searchProductAsync_** hoặc **_getAllProductsAsync_**
+
+Ví dụ:
+
+```jsx
+function SomeComponent() {
+  return (
+    <div>
+      <img src={getProcutImageUrl(1)} alt='' />
+    </div>
+  );
+}
+```

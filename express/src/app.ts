@@ -13,6 +13,8 @@ app.use(sessionManager);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(express.static('img'));
+
 // Compile response message
 app.use((_, res, next) => {
   res.locals.msg = new ResponseMessage(200, {});

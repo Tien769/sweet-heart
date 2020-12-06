@@ -32,3 +32,5 @@ export const searchProductAsync = async queryOption =>
   fetch(`${process.env.REACT_APP_API_SERVER}/prod/s?${parseQueryString(queryOption)}`)
     .then(res => res.json())
     .then(res => (res.error ? Promise.reject(res) : res));
+
+export const getProductImageUrl = img => `${process.env.REACT_APP_API_SERVER}/${img}.jpg`;
