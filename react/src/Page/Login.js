@@ -1,44 +1,101 @@
 import React, {useState} from 'react';
 import LoginForm from '../Components/LoginForm';
-import style from './Login.module.css';
+import RegisterForm from '../Components/RegisterForm'
+import './Login.css';
+
+import {authenticateAsync} from '../lib/backendService';
+
+
+
 function Login() {
+
+    // Tài khoản demo
     const adminUser = {
         name: "Nhut",
         email: "hoangnhutsp@gmail.com",
         password: "111"
     }
-    const [user, setUser] = useState({name: "", email: ""});
-    const [error, setError] = useState("");
 
+    // 1 : Đăng nhập
+    // 0 : Đăng ký
+    const _isLogin = 1;
+
+    const [user, setUser] = useState({name: "", email: ""});
+
+
+    const [error, setError] = useState("");
+    const [isLogin, setIsLogin] = useState(_isLogin);
+
+
+    // Kiểm tra thông tin đăng nhập
     const Login = details => {
         console.log(details);
 
+       
+        /*
+        authenticateAsync(details, 'signin')
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log("ERR: " + err);
+        });
+
+        */
+
         if (details.email == adminUser.email && details.password == adminUser.password){
-            console.log("Logged in");
+            console.log("Đăng nhập thành công");
+            setError("");
             setUser({
                 name : adminUser.name,
                 email : details.email
             })
         } else {
-            console.log("Details do not match!");
-            setError("Sai tai khoan hoac mat khau!!!")
+            console.log("Sai tài khoản hoặc mật khẩu");
+            setError("Sai tài khoản hoặc mật khẩu !")
         }
     }
-    const Logout = () => {
-        console.log("Logout");
-        setUser({name:"", email:""});
-    }
-    return (
 
+    // Thay đổi từ đăng nhâp thành đăng kí và ngược lại.
+    const updateIsLogin = () => {
+        setIsLogin(1-isLogin);
+        setError("");
+        console.log(isLogin);
+    } 
+
+
+    //Kiểm tra thông tin đăng kí
+    // info = {name: "", email: "", password: ""}
+    const Register = info => {
+        console.log(info);
+
+        // Kiểm tra xem email đã đăng kí hay chưa
+        if (info.email == adminUser.email){
+            setError("Email đã được đăng ký.")
+        }
+        else{
+            // Đăng ký thành công.
+            // Cập nhật database - backend
+
+            //
+            setUser({
+                name: info.name,
+                email : info.email
+            })
+            console.log("Đăng ký thành công");
+        } 
+        
+    }
+
+
+    return (
         <div className="Login">
-           {(user.email != "") ? (
-               <div className="welcome">
-                   <h2>Welcome, <span>{user.name}</span></h2>
-                   <button onClick={Logout}>Logout</button>
-                </div>
-           ):(
-                <LoginForm Login={Login} error={error}/>
-           )}
+            {(isLogin == 1) ? (
+                <LoginForm updateIsLogin={updateIsLogin} Login={Login} error={error}/>
+
+            ):(
+                <RegisterForm updateIsLogin={updateIsLogin} Register={Register} error={error}/>
+            )}
         </div>
         
     )

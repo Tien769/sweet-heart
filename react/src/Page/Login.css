@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+input, button {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.Login {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    background-color: none;
+}
+
+form {
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+form:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: 1;
+    background-image: linear-gradient(to bottom right, #FF4646, #ffb0c8);
+}
+
+
+form .form-inner {
+    position: relative;
+    display: block;
+    background-color: #fff;
+    padding: 30px;
+    z-index: 2;
+}
+
+form .form-inner h2{
+    text-align: center;
+    color: #000;
+    font-size:  28px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+form .form-inner .form-group{
+    display: block;
+    width: 400px;
+    margin-bottom: 15px;
+}
+
+.form-inner .form-group label {
+    text-align: left;
+    display: block;
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 5px;
+    transition: 0.4s;
+}
+
+.form-inner .form-group:focus-within label{
+    color: #FE4880;
+    
+}
+
+form .form-inner .form-group input {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    transition: 0.4s;
+}
+
+form .form-inner .form-group input:focus{
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+form .form-inner input[type="submit"]{
+   
+    padding: 16px 32px;
+    background-image: linear-gradient(to right, #FF4646 50%, #FE4880);
+    background-size: 200%;
+    background-position: 0%;
+    transition: 0.4s;
+    color: #FFF;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+form .form-inner input[type="submit"]:hover {
+    background-position: 100% 0%;
+   
+}
+
+form .form-inner .form-group .quenmatkhau{
+    margin: 16px;
+    text-align: right;
+    font-size: 12px;
+    color: blue;
+}
+
+form .form-inner .error{
+    color: #333333;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 16px;
+    background-color: #FAD1D8;
+    border : 1px solid red;
+    font-size: 14px;
+}
+
+form .form-inner .dangkyngay{
+    margin: 16px;
+    
+}
+form .form-inner .end_ input{
+    margin: 0;
+    margin-left: 8px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: blue;
+}
