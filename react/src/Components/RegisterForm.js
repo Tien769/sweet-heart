@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 function RegisterForm({ updateIsLogin, Register, error }) {
 
-    const [info, setInfo] = useState({name: "", email: "", password: ""})
+    const [info, setInfo] = useState({email: "", name: "", address: '', phone:"", password: ""})
 
     const submitHandler = e => {
         e.preventDefault();
