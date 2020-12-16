@@ -157,7 +157,7 @@ Ví dụ:
 function SomeComponent() {
   return (
     <div>
-      <img src={getProcutImageUrl(1)} alt='' />
+      <img src={getProductImageUrl(1)} alt='' />
     </div>
   );
 }
