@@ -85,7 +85,7 @@ export const removeCartItem = async prod => {
     .then(res => (res.error ? Promise.reject(res) : res));
 };
 
-export const emptyCart = async =>
+export const emptyCart = async () =>
   fetch(`${process.env.REACT_APP_API_SERVER}/cart/empty`, { credentials: 'include' })
     .then(res => res.json())
     .then(res => console.log(res.cart));

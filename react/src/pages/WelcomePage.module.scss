@@ -1,0 +1,97 @@
+@import '../variables';
+
+#Banner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+  img {
+    width: 100%;
+  }
+}
+
+div.sectionHeader {
+  height: 3em;
+  padding-top: 0.5em;
+  margin-bottom: 1em;
+  font-size: 1.25rem;
+  font-weight: 300;
+  h1 {
+    position: absolute;
+    margin: 0px;
+    text-shadow: 1px 1px 1px;
+  }
+}
+
+section:nth-of-type(1) > div.sectionHeader {
+  color: white;
+  padding-left: 26%;
+  background: url('../assets/section-1.jpg');
+}
+
+section:nth-of-type(2) > div.sectionHeader {
+  color: white;
+  padding-left: 23%;
+  background: url('../assets/section-2.jpg');
+  background-size: cover;
+}
+
+#Category {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2em;
+  justify-content: center;
+
+  button {
+    background-color: $highlight-alt;
+    width: 10em;
+    height: 10em;
+    margin: 1em;
+    border-radius: 1em;
+    cursor: pointer;
+    border: 1px solid grey;
+    position: relative;
+
+    &:hover {
+      transition: 0.3s;
+      box-shadow: 1px 1px 2px;
+    }
+
+    * {
+      pointer-events: none;
+    }
+
+    img {
+      position: absolute;
+      top: 5px;
+      left: 0px;
+      right: 0px;
+      margin: auto;
+      height: 80%;
+    }
+
+    span {
+      position: absolute;
+      bottom: 0.05em;
+      left: 0px;
+      right: 0px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+  }
+
+  button.highlight {
+    background-color: lighten($color: $highlight, $amount: 10);
+  }
+}
+
+#ProdGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  & > div {
+    display: flex;
+    justify-content: center;
+    flex-basis: 25%;
+    padding: 0.5em 1em;
+  }
+}

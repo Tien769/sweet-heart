@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react';
-import style from './App.module.scss';
-import { checkAuthenticationAsync } from './lib/backendService';
+import { useState } from 'react';
+import { NavBar } from './components/NavBar';
+import './App.scss';
+import { WelcomePage } from './pages/WelcomePage';
+import { PageChangerContext } from './_contexts';
 
 function App() {
-  const [authStatus, setAuthStatus] = useState(undefined);
-
-  useEffect(() => {
-    checkAuthenticationAsync()
-      .then(res => setAuthStatus(res.authenticated))
-      .catch(err => console.error(err));
-  }, [authStatus]);
+  const [page, setPage] = useState(<WelcomePage />);
 
   return (
-    <div id={style.App}>
-      <h1>Hello World</h1>
+    <div id='App' className='flex-container'>
+      <PageChangerContext.Provider value={{ changePage: newPage => setPage(newPage) }}>
+        <div className='flex-row'>
+          <NavBar />
+        </div>
+        <div id='PageContent'>{page}</div>
+      </PageChangerContext.Provider>
     </div>
   );
 }
