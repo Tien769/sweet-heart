@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './product.css'
 import { BiCart } from 'react-icons/bi';
 import { BiChevronDownCircle } from 'react-icons/bi'
