@@ -162,3 +162,92 @@ function SomeComponent() {
   );
 }
 ```
+
+### 7. getCartItems
+
+---
+
+Lấy danh sách các sản phẩm trong giỏ hàng. Cấu trúc dữ liệu tương tự như getAllProductsAsync và searchProductAsync.
+
+Tuy nhiên, mỗi sản phẩm có thể một thuộc tính là **_quantity_**, số lượng của sản phẩm trong giỏ hàng.
+
+Ví dụ:
+
+```jsx
+function SomeComponent() {
+
+  useEffect(() => {
+    getCartItems().then(res => {
+      console.log(res.cart)
+    })
+
+  },[...])
+
+  return <div></div>;
+}
+```
+
+### 8. addCartItem, removeCartItem
+
+---
+
+Được dùng để thêm hoặc loại bỏ một sản phẩm ra khỏi giỏ hàng.
+
+**_addCartItem_** sẽ thêm sản phẩm với số lượng mặc định là 1. Nếu hàm này được gọi với một sản phẩm đã nằm trong giỏ hàng, số lượng của sản phẩm đó sẽ được cập nhật thêm 1 đơn vị.
+
+**_removeCartItem_** không thay đổi số lượng của sản phẩm. Khi được gọi với một item, item đó sẽ bị xóa khỏi cart hoàn toàn.
+
+Cú pháp gọi cả hai hàm này bao gồm một tham số, là đối tượng sản phẩm cần thao tác. Đối tượng này có thể được lấy từ getAllProductsAsync hoặc searchProductAsync.
+
+Ví dụ:
+
+```jsx
+function SomeComponent() {
+  const [prod, setProd] = useState({});
+
+  useEffect(() => {
+    getAllProductsAsync()
+      .then(res => res.product_list)
+      .then(list => {
+        setProd(list[0]);
+      });
+  }, []);
+
+  function addToCart() {
+    addCartItem(prod);
+  }
+
+  function removeFromCart() {
+    removeCartItem(prod);
+  }
+
+  return (
+    <div id='ProductCard'>
+      <button onClick={addToCart}>Add to Cart</button>
+      <button onClick={removeFromCart}>Remove from Cart</button>
+    </div>
+  );
+}
+```
+
+### 9. setCartItemQuantity
+
+---
+
+Đặt giá trị số lượng cho một item trong giỏ hàng.
+
+Cú pháp gọi bao gồm một tham số sản phẩm và một tham số số lượng.
+
+Ví dụ:
+
+```jsx
+
+// Sản phẩm cần thao tác
+const prod = ...
+setCartItemQuantity(prod, 5) // Đặt số lượng sản phẩm là 5
+
+```
+
+### 10. emptyCart
+
+Reset trạng thái giỏ hàng. Xóa toàn bộ sản phẩm.

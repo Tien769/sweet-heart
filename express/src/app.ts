@@ -5,6 +5,7 @@ import compression from 'compression';
 import { authRouter } from './routers/authRouter';
 import { productRouter } from './routers/productRouters';
 import { ResponseMessage } from './_types';
+import { cartRouter } from './routers/cartRouter';
 const app = express();
 
 app.use(compression());
@@ -30,6 +31,7 @@ app.get('/', (_, res, next) => {
 
 app.use('/auth', authRouter);
 app.use('/prod', productRouter);
+app.use('/cart', cartRouter);
 
 // Default error handler
 // Always check for error
