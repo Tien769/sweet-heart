@@ -53,10 +53,6 @@ function Login() {
     // info = {name: "", email: "", password: ""}
     const Register = info => {
         console.log(info);
-
-
-
-        console.log("CHECK: ");
         authenticateAsync(info, 'signup')
             .then(res => {
                 console.log(res);
@@ -71,7 +67,7 @@ function Login() {
 
 
     // Xử lý sau khi đăng nhập hoặc đăng kí thành công.
-    const sayHello = () => {
+    const xuLyThanhCong = () => {
         return (
             <div>
                 HELLO
@@ -80,16 +76,24 @@ function Login() {
     }
 
     return (
-        
-        < div className = "Login" >
-            {(authenticated != 0) ? (<div className="">Xin chao</div>) :
-            ((isLogin == 1) ? (
-                <LoginForm updateIsLogin={updateIsLogin} Login={Login} error={error} />
 
-            ) : (
-                    <RegisterForm updateIsLogin={updateIsLogin} Register={Register} error={error} />
-                ))
-}
+        < div>
+            <div className="HeaderLogin">
+                <p>SWEET HEART</p>
+                
+            </div>
+            <hr></hr>
+            <div className="Login">
+                {(authenticated !== 0) ? (xuLyThanhCong) :
+                    ((isLogin === 1) ? (
+                        <LoginForm updateIsLogin={updateIsLogin} Login={Login} error={error} />
+
+                    ) : (
+                            <RegisterForm updateIsLogin={updateIsLogin} Register={Register} error={error} />
+                        ))
+                }
+            </div>
+
         </div >
 
     )

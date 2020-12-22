@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import './LoginForm.css';
 
 function LoginForm({ updateIsLogin, Login, error }) {
 
     const [details, setDetails] = useState({email: "", password: "" })
+    const [errForm, setErrForm] = useState("");
 
     const submitHandler = e => {
         e.preventDefault();
-        Login(details);
+        if (details.email === "" || details.password === ""){
+            setErrForm("Vui lòng nhập đầy đủ thông tin.");
+        }
+        else{
+            setErrForm("");
+            Login(details);
+        }
     }
     const dangKyNgay = e => {
         updateIsLogin();
@@ -18,7 +24,8 @@ function LoginForm({ updateIsLogin, Login, error }) {
             >
                 <div className="form-inner" >
                     <h2  >Đăng nhập</h2>
-                    {(error != "") ? (<div className="error">{error}</div>) : ""}
+                    {(error !== "") ? (<div className="error">{error}</div>) : ""}
+                    {(errForm !== "") ? (<div className="error">{errForm}</div>) : ""}
                     <div className="form-group">
                         <label htmlFor="email"> Email: </label>
                         <input type="email" name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />

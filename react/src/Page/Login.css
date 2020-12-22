@@ -6,6 +6,23 @@
     font-size: 16px;
 }
 
+.HeaderLogin{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 0px;
+    height: 15vh;  
+    
+}
+
+.HeaderLogin p {
+    font-size: 32px;
+    color: #FF4646;
+}
+hr{
+    border: 1px solid #ffa8a8;
+}
+
 input, button {
     appearance: none;
     background: none;
@@ -14,10 +31,11 @@ input, button {
 }
 
 .Login {
+    margin-top: 32px;
     justify-content: center;
     align-items: center;
     display: flex;
-    height: 100vh;
+    
     background-color: none;
 }
 
@@ -134,4 +152,23 @@ form .form-inner .end_ input{
     border: none;
     background: none;
     color: blue;
+}
+
+.errPassword{
+    margin: 16px;
+    margin-left: 0px;
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    color: red;
+}
+
+.errForm{
+    margin: 16px;
+    margin-left: 0px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: red;
 }
