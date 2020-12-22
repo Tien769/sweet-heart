@@ -4,8 +4,6 @@ import RegisterForm from '../Components/RegisterForm'
 import './Login.css';
 
 import { authenticateAsync } from '../lib/backendService';
-import { checkAuthenticationAsync } from '../lib/backendService'
-
 
 
 function Login() {
