@@ -44,13 +44,19 @@ const ReactComponent = () => {
 
 ### 1. checkAuthenticationAsync
 
-Kiểm tra trạng thái đăng nhập
+Kiểm tra trạng thái đăng nhập và trả về thông tin người dùng của session hiện tại nếu có.
 
 Cấu trúc json trả về:
 
 ```json
 {
-  "authenticated": true // or false
+  "authenticated": true, // or false
+  "user": {
+    "name": "Some Name",
+    "email": "Some Email",
+    "address": "Some Password",
+    "phone": "Some Phone Number"
+  }
 }
 ```
 
