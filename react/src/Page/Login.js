@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import LoginForm from '../Components/LoginForm';
 import RegisterForm from '../Components/RegisterForm'
+import Footer from '../Components/Footer'
+
 import './Login.css';
 
 import { authenticateAsync } from '../lib/backendService';
@@ -96,7 +98,7 @@ function Login() {
                         ))
                 }
             </div>
-
+            <Footer />
         </div >
 
     )
