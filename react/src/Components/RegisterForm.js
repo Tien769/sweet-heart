@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import {checkOnlyNumber} from '../lib/function'
 
 
 function RegisterForm({ updateIsLogin, Register, error }) {
 
     const [info, setInfo] = useState({ email: "", name: "", address: '', phone: "", password: "" })
     const [errForm, setErrForm] = useState("");
+    const [errPhone, setErrPhone] = useState("");
     const [errPassword, setErrPassword] = useState("");
     const [errRePassword, setErrRePassword] = useState("");
 
@@ -28,6 +30,7 @@ function RegisterForm({ updateIsLogin, Register, error }) {
         updateIsLogin();
     }
 
+
     const checkPassword = password => {
         setInfo({ ...info, password: password })
         // Kiểm tra password bao gồm chữ cái và số
@@ -41,8 +44,24 @@ function RegisterForm({ updateIsLogin, Register, error }) {
     
     const checkRePassword = rePassword => {
         if (rePassword !== "" && rePassword !== info.password) {
-            setErrRePassword("Mật khẩu không khớp!!!");
+            setErrRePassword("Mật khẩu không trùng khớp!!!");
         } else setErrRePassword("");
+    }
+
+
+    const checkPhone = phone => {
+        phone = String(phone);
+        console.log(phone);
+        let n = phone.length;
+        if (phone === "" || (checkOnlyNumber(phone) && n < 10))
+            setInfo({ ...info, phone: phone });
+
+        if (n > 0){
+            if (phone[0] !== '0') 
+                setErrPhone("Vui lòng nhập đúng định dạng. Vd: 0905749999"); 
+            else 
+                setErrPhone("");
+        }
     }
 
     return (
@@ -59,6 +78,16 @@ function RegisterForm({ updateIsLogin, Register, error }) {
                     <div className="form-group">
                         <label htmlFor="email"> Email: </label>
                         <input type="email" name="email" id="email" onChange={e => setInfo({ ...info, email: e.target.value })} value={info.email} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="phone"> Số điện thoại: </label>
+                        <input type="text" name="phone" id="phone" onChange={e => checkPhone(e.target.value)} value={info.phone} />
+                    </div>
+                    {(errPhone !== "") ? (<div className="errPassword">{errPhone}</div>) : ""}
+
+                    <div className="form-group">
+                        <label htmlFor="address"> Địa chỉ: </label>
+                        <input type="text" name="address" id="address" onChange={e => setInfo({ ...info, address: e.target.value })} value={info.address} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password"> Mật khẩu: </label>

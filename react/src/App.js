@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import style from './App.module.scss';
 import { checkAuthenticationAsync } from './lib/backendService';
 import Login from './Page/Login';
+import Profile from './Page/Profile'
 
 function App() {
   const [authStatus, setAuthStatus] = useState(undefined);
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div id={style.App}>
-      <Login />
+      <Profile />
     </div>
   );
 }

@@ -1,29 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginForm from '../Components/LoginForm';
 import RegisterForm from '../Components/RegisterForm'
 import './Login.css';
 
 import { authenticateAsync } from '../lib/backendService';
-
+import {checkAuthenticationAsync} from '../lib/backendService';
 
 function Login() {
+    // 1 : Đăng nhập
+    // 0 : Đăng ký
+    const _isLogin = 1;
 
+    const [authenticated, setAuthenticated] = useState(0);
+    const [error, setError] = useState("");
+    const [isLogin, setIsLogin] = useState(_isLogin);
+
+
+    // Kiểm tra server đã đăng nhập chưa
+    useEffect(()=>{
+        checkAuthenticationAsync()
+        .then(res => {
+            console.log("useEffect" + res + " " + res.authenticateAsync);
+
+            //setAuthenticated(res.authenticateAsync);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+        }
+    );
     // Tài khoản demo
     const adminUser = {
         name: "Nhut",
         email: "hoangnhutsp@gmail.com",
         password: "111"
     }
-
-    // 1 : Đăng nhập
-    // 0 : Đăng ký
-    const _isLogin = 1;
-
-    const [authenticated, setAuthenticated] = useState(0);
-
-
-    const [error, setError] = useState("");
-    const [isLogin, setIsLogin] = useState(_isLogin);
 
 
     // Kiểm tra thông tin đăng nhập
@@ -67,24 +78,16 @@ function Login() {
 
 
     // Xử lý sau khi đăng nhập hoặc đăng kí thành công.
-    const xuLyThanhCong = () => {
-        return (
-            <div>
-                HELLO
-            </div>
-        )
-    }
 
     return (
 
         < div>
             <div className="HeaderLogin">
                 <p>SWEET HEART</p>
-                
             </div>
             <hr></hr>
             <div className="Login">
-                {(authenticated !== 0) ? (xuLyThanhCong) :
+                {(authenticated !== 0) ? (<div>Xin chao`</div>) :
                     ((isLogin === 1) ? (
                         <LoginForm updateIsLogin={updateIsLogin} Login={Login} error={error} />
 
