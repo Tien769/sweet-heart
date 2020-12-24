@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import style from './App.module.scss';
 import { checkAuthenticationAsync } from './lib/backendService';
+import NavBar from './components/NavBar';
+
+
 
 function App() {
   const [authStatus, setAuthStatus] = useState(undefined);
@@ -13,7 +16,7 @@ function App() {
 
   return (
     <div id={style.App}>
-      <h1>Hello World</h1>
+      <NavBar/>
     </div>
   );
 }
