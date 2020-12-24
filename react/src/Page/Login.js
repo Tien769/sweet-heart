@@ -7,6 +7,8 @@ import './Login.css';
 
 import { authenticateAsync } from '../lib/backendService';
 import {checkAuthenticationAsync} from '../lib/backendService';
+import bg from '../bg/bg_01.jpg'
+
 
 function Login() {
     // 1 : Đăng nhập
@@ -83,12 +85,12 @@ function Login() {
 
     return (
 
-        < div>
+        <div className="set_bg">
             <div className="HeaderLogin">
                 <p>SWEET HEART</p>
-            </div>
-            <hr></hr>
-            <div className="Login">
+            </div>    
+            <hr></hr>  
+                <div className="Login">
                 {(authenticated !== 0) ? (<div>Xin chao`</div>) :
                     ((isLogin === 1) ? (
                         <LoginForm updateIsLogin={updateIsLogin} Login={Login} error={error} />
@@ -97,7 +99,7 @@ function Login() {
                             <RegisterForm updateIsLogin={updateIsLogin} Register={Register} error={error} />
                         ))
                 }
-            </div>
+                </div>
             <Footer />
         </div >
 
