@@ -1,7 +1,8 @@
-import { response, Router } from 'express';
+import { Router } from 'express';
 import { NextFunction, Request, Response } from 'express';
 import { PlainObject, ResponseMessage } from '../_types';
 import * as AuthService from '../services/authenticationService';
+import { nextTick } from 'process';
 
 const router = Router();
 
@@ -42,6 +43,7 @@ const updateSession = (req: Request, res: Response, next: NextFunction) => {
       });
     (req.session as PlainObject).user = options.user && options.user;
     (res.locals.msg as ResponseMessage).addData({ authenticated: options.user ? true : false });
+    if (options.user) (res.locals.msg as ResponseMessage).addData({ user: options.user });
   }
   return next();
 };
@@ -104,6 +106,21 @@ router.get(
       });
     }
     return next();
+  },
+  updateSession
+);
+
+router.post(
+  '/update',
+  checkAuthenticatedRequirement,
+  parseUserAuthentication,
+  (req, res, next) => {
+    if (res.locals.err) return next();
+    AuthService.updateProfile(res.locals.user, (err, serviceResponse) => {
+      if (err) console.log(err);
+      else res.locals.sess = { refresh: true, user: serviceResponse?.data };
+      next();
+    });
   },
   updateSession
 );

@@ -1,4 +1,6 @@
 import { stringify as parseQueryString } from 'query-string';
+
+// -----------------------------------------------AUTHENTICATION-----------------------------------------------
 export const checkAuthenticationAsync = async () =>
   fetch(`${process.env.REACT_APP_API_SERVER}/auth`, {
     credentials: 'include',
@@ -23,6 +25,19 @@ export const unauthenticateAsync = async () =>
     .then(res => res.json())
     .then(res => (res.error ? Promise.reject(res) : res));
 
+export const updateAccountAsync = async account =>
+  fetch(`${process.env.REACT_APP_API_SERVER}/auth/update`, {
+    credentials: 'include',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application.json',
+    },
+    body: JSON.stringify(account),
+  })
+    .then(res => res.json())
+    .then(res => (res.error ? Promise.reject(res) : res));
+
+// -----------------------------------------------PRODUCTS-----------------------------------------------
 export const getAllProductsAsync = async () =>
   fetch(`${process.env.REACT_APP_API_SERVER}/prod`, { credentials: 'include' })
     .then(res => res.json())
@@ -37,6 +52,7 @@ export const searchProductAsync = async queryOption =>
 
 export const getProductImageUrl = img => `${process.env.REACT_APP_API_SERVER}/${img}.jpg`;
 
+// -----------------------------------------------CART MANAGEMENT-----------------------------------------------
 export const getCartItems = async () =>
   fetch(`${process.env.REACT_APP_API_SERVER}/cart`, {
     credentials: 'include',

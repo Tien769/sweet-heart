@@ -1,6 +1,6 @@
 import { v4 as generateId } from 'uuid';
 import { hashSync, compareSync, genSaltSync } from 'bcryptjs';
-import { ResponseMessage } from '../_types';
+import { PlainObject, ResponseMessage } from '../_types';
 import Database from './database';
 import { BCRYPT_SALT } from '../_config';
 
@@ -107,6 +107,52 @@ export const signin = (
   });
 };
 
+export const updateProfile = (
+  acc: Account,
+  callback: (err: ResponseMessage | undefined, data?: ResponseMessage) => void
+) => {
+  if (!acc.email)
+    return callback(new ResponseMessage(400, { error: 'MISSING REQUIRED INFORMATION' }));
+
+  Database.serialize(() => {
+    const statement = `UPDATE accounts SET ${getUpdateQueryCondition(acc)} WHERE email=?`;
+    console.log(statement);
+    const params = [acc.email];
+    Database.run(
+      statement,
+      params,
+      err =>
+        err &&
+        callback(new ResponseMessage(500, { error: 'ERROR WHILE UPDATING USER', detail: err }))
+    );
+
+    Database.all(
+      `SELECT email,name,phone,address FROM accounts WHERE email=?`,
+      [acc.email],
+      (err, result) => {
+        if (err)
+          return callback(
+            new ResponseMessage(500, {
+              err: 'INTERNAL ERROR WHILE RETRIEVING UDPATED USER',
+              detail: err,
+            })
+          );
+        else {
+          return callback(
+            undefined,
+            new ResponseMessage(200, {
+              email: result[0].email,
+              name: result[0].name,
+              phone: result[0].phone,
+              address: result[0].address,
+            })
+          );
+        }
+      }
+    );
+  });
+};
+
 //
 // ------------------------------------------UTILS------------------------------------------
 
@@ -117,3 +163,15 @@ const encryptPassword = (password: string) => {
 
 const checkPassword = (uncheckedPassword: string, hashedPassword: string) =>
   compareSync(uncheckedPassword, hashedPassword);
+
+const getUpdateQueryCondition = (acc: PlainObject) => {
+  const fields = Object.getOwnPropertyNames(acc).filter(field => (acc[`${field}`] ? true : false));
+  let setStatement = '';
+  fields.forEach((field, index) => {
+    const fieldValue = field === 'password' ? encryptPassword(acc[`${field}`]) : acc[`${field}`];
+    if (!fieldValue) return;
+    setStatement = setStatement.concat(`${field}='${fieldValue}'`);
+    if (index !== fields.length - 1) setStatement = setStatement.concat(',');
+  });
+  return setStatement;
+};

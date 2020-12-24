@@ -99,7 +99,55 @@ Cấu trúc json trả về:
 }
 ```
 
-### 4. getAllProductsAsync
+### 4. updateAccountAsync
+
+Dùng để cập nhật thông tin về tài khoản người dùng.
+
+Các thông tin có thể cập nhật bao gồm: name, phone, address, password. Lưu ý: **_HÀM NÀY KHÔNG CẬP NHẬT EMAIL_**
+
+Cú pháp gọi hàm bao gồm một tham số, chứa thông tin cần cập nhật.
+
+Ví dụ:
+
+```jsx
+function SomeComponent() {
+  useEffect(() => {
+    updateAccountAsync({
+      email: 'current email',
+      name: 'new name',
+      address: 'new address',
+      phone: 'new phone',
+    }).then(res => {
+      console.log(res);
+    });
+  });
+
+  return <div>SOME COMPONENT</div>;
+}
+```
+
+**Lưu ý**:
+
+- Trong đối tượng tham số đầu vào, thuộc tính email là thuộc tính bắt buộc, để xác định tài khoản cần được cập nhật. Bên cạnh đó, người dùng bắt buộc phải đăng nhập để
+  thực hiện thay đổi thông tin.
+
+- Các thuộc tính còn lại của đối tượng tham số là optional, chỉ truyền giá trị cho thuộc tính nào cần cập nhật.
+
+  Ví dụ: đối tượng tham số với giá trị:
+
+  ```jsx
+  {
+    email: 'mail@gmail.com';
+    name: 'Jack';
+  }
+  ```
+
+  Khi thực thì hàm, tài khoản với email là _mail@gmail.com_ sẽ được cập nhật. Các thông tin được cập nhật là **_name_** với giá trị mới là **_Jack_**. Những thông tin còn lại
+  (phone, address) sẽ được giữ giá trị cũ.
+
+- Giá trị trả về của server tương tự như hàm **_checkAuthenticationAsync_**, với thông tin **_ĐÃ ĐƯỢC CẬP NHẬT_**.
+
+### 5. getAllProductsAsync
 
 Dùng để lấy danh sách **_toàn bộ_** sản phẩm.
 
@@ -118,7 +166,7 @@ Cấu trúc json trả về:
 }
 ```
 
-### 5. searchProductAsync
+### 6. searchProductAsync
 
 Dùng để lấy danh sách sản phẩm theo điều kiện.
 
@@ -149,9 +197,7 @@ searchProductAsync({
 // ...
 ```
 
-### 6. getProductImageUrl
-
----
+### 7. getProductImageUrl
 
 Trả về đường dẫn hình ảnh của sản phẩm. Truyền giá trị trả về cho tag **_img_** để hiển thị hình ảnh.
 
@@ -169,9 +215,7 @@ function SomeComponent() {
 }
 ```
 
-### 7. getCartItems
-
----
+### 8. getCartItems
 
 Lấy danh sách các sản phẩm trong giỏ hàng. Cấu trúc dữ liệu tương tự như getAllProductsAsync và searchProductAsync.
 
@@ -193,9 +237,7 @@ function SomeComponent() {
 }
 ```
 
-### 8. addCartItem, removeCartItem
-
----
+### 9. addCartItem, removeCartItem
 
 Được dùng để thêm hoặc loại bỏ một sản phẩm ra khỏi giỏ hàng.
 
@@ -236,9 +278,7 @@ function SomeComponent() {
 }
 ```
 
-### 9. setCartItemQuantity
-
----
+### 10. setCartItemQuantity
 
 Đặt giá trị số lượng cho một item trong giỏ hàng.
 
@@ -254,6 +294,6 @@ setCartItemQuantity(prod, 5) // Đặt số lượng sản phẩm là 5
 
 ```
 
-### 10. emptyCart
+### 11. emptyCart
 
 Reset trạng thái giỏ hàng. Xóa toàn bộ sản phẩm.
