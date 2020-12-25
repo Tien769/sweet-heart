@@ -1,0 +1,143 @@
+.payment-order{
+    position: relative;
+    line-height: 30px;
+    padding: 40px;
+    border: 3px solid #e6e6e6;
+    border-radius: 6px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    width: 100%;
+    max-height: 990px;
+}
+
+.title-bill{
+    text-align: center;
+    padding-bottom: 5%;
+    position: relative;
+}
+.container-info{
+    position: relative;
+    left: 5%;
+}
+.info-custem{
+    font-size: 17px;
+}
+.time-order{
+    font-weight: bold;
+}
+
+.data-time{
+    font-weight: normal;
+    font-size: 17px;
+}
+
+.table1{
+    width: 100%;
+    margin-bottom: 0;
+    color: #212529;
+    border-collapse: collapse;
+    text-indent: initial;
+    border-color: #e6e6e6;
+    display: table;
+    padding: 0;
+}
+
+.tbody-table1{
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    color: #212529;
+    border-collapse: collapse;
+    text-indent: initial;
+    border-color: #e6e6e6;
+    display: table;
+}
+
+.stt{
+    width: 3%;
+    text-align: center;
+}
+
+.product{
+    width: 50%;
+}
+
+.price-item{
+    width: 10%;
+    text-align: center;
+}
+
+.num-item{
+    width: 10%;
+    text-align: center;
+}
+
+.subtotal{
+    width: 15%;
+    text-align: center;
+}
+
+.stt1{
+    width: 3%;
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: 2%;
+}
+
+.product1{
+    width: 50%;
+    padding-left: 3%;
+    padding-right: 2%;
+}
+
+.price-item1{
+    width: 10%;
+    text-align: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.num-item1{
+    width: 10%;
+    text-align: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.subtotal1{
+    width: 15%;
+    text-align: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.total{
+    position: relative;
+    margin: 5%;
+}
+.total h6{
+    text-align: right;
+    margin-right: 2%;;
+}
+
+.button-back-home{
+    background-color: #db8885;
+    border: none;
+    border-radius: 5%;
+    margin-bottom: 5%;
+    size: 17px;
+    height: 35px;
+    font-size: 17px;
+    color: white;
+}
+
+.button-back-home:hover{
+    background-color:  #d8615d;
+}
+
+.back button:active,
+.back button:focus{
+    border: none;
+    outline: 0 !important;
+}
+

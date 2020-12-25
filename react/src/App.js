@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react';
 import style from './App.module.scss';
-import { checkAuthenticationAsync } from './lib/backendService';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './components/Bill.css';
+import './components/Purchase.css';
+import './components/Admin.css';
+import { getAllProductsAsync } from './lib/backendService';
+import { getCartItems } from './lib/backendService';
+import { addCartItem } from './lib/backendService';
+import PageCart from './components/PageCart';
 
 function App() {
-  const [authStatus, setAuthStatus] = useState(undefined);
 
-  useEffect(() => {
-    checkAuthenticationAsync()
-      .then(res => setAuthStatus(res.authenticated))
-      .catch(err => console.error(err));
-  }, [authStatus]);
+  
 
   return (
-    <div id={style.App}>
-      <h1>Hello World</h1>
+    <div>
+        <PageCart></PageCart>
     </div>
-  );
+);
 }
-
 export default App;
