@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import { checkAuthenticationAsync, getCartItems, searchProductAsync } from '../lib/backendService';
 import { PageChangerContext } from '../_contexts';
 import { WelcomePage } from '../pages/WelcomePage';
+import { AuthenticationPage } from '../pages/AuthenticationPage';
 
 const MainComponent = () => {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -16,7 +17,11 @@ const MainComponent = () => {
   };
 
   const showAuthStatus = () => {
-    checkAuthenticationAsync().then(res => console.log(res.authenticated));
+    checkAuthenticationAsync()
+      .then(res => res.authenticated)
+      .then(auth =>
+        !auth ? changePage(<AuthenticationPage />) : console.log('ALREADY LOGGED IN')
+      );
   };
 
   const handleSearch = e => {

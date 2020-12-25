@@ -8,11 +8,13 @@ body {
   margin: 0px;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
-  background-color: bisque;
+  min-height: 100vh;
+  background-color: bisque !important;
+  position: relative;
 }
 
 #App {
-  margin: 0em 15%;
+  padding: 0em 15%;
 
   #PageContent {
     margin-top: 1em;
@@ -33,12 +35,12 @@ body {
 
 @media all and(max-width: 1280px) {
   #App {
-    margin: 0em 10%;
+    padding: 0em 10%;
   }
 }
 
 @media all and(max-width: 900px) {
   #App {
-    margin: 0em;
+    padding: 0em;
   }
 }
