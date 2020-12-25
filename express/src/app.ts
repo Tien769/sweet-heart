@@ -5,6 +5,7 @@ import compression from 'compression';
 import { authRouter } from './routers/authRouter';
 import { productRouter } from './routers/productRouters';
 import { ResponseMessage } from './_types';
+import { cartRouter } from './routers/cartRouter';
 const app = express();
 
 app.use(compression());
@@ -12,6 +13,8 @@ app.use(cors);
 app.use(sessionManager);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(express.static('img'));
 
 // Compile response message
 app.use((_, res, next) => {
@@ -28,6 +31,7 @@ app.get('/', (_, res, next) => {
 
 app.use('/auth', authRouter);
 app.use('/prod', productRouter);
+app.use('/cart', cartRouter);
 
 // Default error handler
 // Always check for error

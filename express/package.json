@@ -33,7 +33,7 @@
 		"compile": "yarn run tsc",
 		"watch:compile": "yarn run compile -w",
 		"watch:build": "yarn run nodemon -r dotenv/config ./dist/server.js",
-		"clean": "rm -rf nodemodules && yarn run clear",
+		"clean": "rm -rf node_modules && yarn run clear",
 		"dev": "yarn run compile && (yarn run watch:compile & yarn run watch:build)"
 	}
 }

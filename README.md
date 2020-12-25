@@ -13,7 +13,7 @@
    PORT=3001
    HOST='localhost'
    BCRYPT_SALT=12
-   REACT_HOST="https://localhost:3000"
+   REACT_HOST="http://localhost:3000"
    SESSION_SECRET="Loremipsumdoloritame,consecteturadipiscingelitsedoeiusmodtempoincididunutlaboreetdolore"
    ```
 

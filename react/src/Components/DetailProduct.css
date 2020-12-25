@@ -1,0 +1,57 @@
+
+@font-face{
+    font-family: nhut;
+    src: url('../font/BebasNeue-Regular.ttf');
+}
+
+
+
+img{
+    width: 100%;
+}
+
+
+.section_heading {
+    margin-top: 70px;
+    position: relative;
+    left: 10%;
+    font-size: 42px;
+    font-family: nhut;
+}
+
+.more_info_product, .product_price, .btn_add_cart{
+    position: relative;
+    left: 10%;
+}
+
+.menu_home .menu_home_title:after {
+    background: #131212;
+}
+
+.line_after_heading:after {
+    content: '';
+    height: 5px;
+    background: #FF4646;
+    width: 20%;
+    display: block;
+}
+
+.product_price{
+    font-family: nhut;
+    color: #FF4646;
+    font-size: 24px;
+    line-height: 34px;
+}
+.btn_add_cart{
+    margin-top: 32px;
+    text-align: center;
+    height: 60px;
+    width: 60%;
+    color: white;
+    background-color: #FF4646;
+    border: none;
+}
+
+.info_product_wrap{
+    justify-content: left;
+}
