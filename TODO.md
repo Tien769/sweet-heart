@@ -26,6 +26,6 @@ Hiện tại trang web đã hoàn thành xong:
 
 - Kiểm thử và sửa các bug còn tồn tại (danh sách bên dưới).
 
-## 3. Danh sách bureloadg
+## 3. Danh sách bug
 
 Chờ bổ sung
