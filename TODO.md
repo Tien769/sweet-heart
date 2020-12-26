@@ -18,6 +18,8 @@ Hiện tại trang web đã hoàn thành xong:
 
 - Hoàn thành chức năng lưu trữ thông tin hóa đơn ở server.
 
+- Trang kết quả tìm kiếm.
+
 - Xây dựng trang admin.
 
 - Hoàn thành trang profile cá nhân (bao gồm hiển thị thông tin và cập nhật thông tin).
