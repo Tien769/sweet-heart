@@ -12,7 +12,7 @@ Hiện tại trang web đã hoàn thành xong:
 
 - Các trang hỗ trợ (liên hệ, điều khoản).
 
-- Trang thanh toán và giỏ hàng (phần lưu trữ thông tin hóa đơn và csdl chưa thực hiện.
+- Trang thanh toán và giỏ hàng (phần lưu trữ thông tin hóa đơn và csdl chưa thực hiện).
 
 ## 2. Cần làm (sắp xếp theo ưu tiên)
 
