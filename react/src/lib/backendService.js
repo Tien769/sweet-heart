@@ -30,7 +30,7 @@ export const updateAccountAsync = async account =>
     credentials: 'include',
     method: 'POST',
     headers: {
-      'Content-Type': 'application.json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(account),
   })
