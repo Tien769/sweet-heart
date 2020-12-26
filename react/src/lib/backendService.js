@@ -72,7 +72,7 @@ export const addCartItem = async prod =>
     .then(res => res.json())
     .then(res => (res.error ? Promise.reject(res) : res));
 
-export const removeCartItem = async prod => {
+export const removeCartItem = async prod =>
   fetch(`${process.env.REACT_APP_API_SERVER}/cart/remove`, {
     credentials: 'include',
     method: 'POST',
@@ -83,12 +83,11 @@ export const removeCartItem = async prod => {
   })
     .then(res => res.json())
     .then(res => (res.error ? Promise.reject(res) : res));
-};
 
 export const emptyCart = async () =>
   fetch(`${process.env.REACT_APP_API_SERVER}/cart/empty`, { credentials: 'include' })
     .then(res => res.json())
-    .then(res => console.log(res.cart));
+    .then(res => (res.error ? Promise.reject(res) : res));
 
 export const setCartItemQuantity = async (prod, quantity) =>
   fetch(`${process.env.REACT_APP_API_SERVER}/cart/quantity`, {

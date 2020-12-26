@@ -170,14 +170,14 @@ const Page = () => {
       } else {
         setError({});
         authenticateAsync(authDetails, 'signup')
-          .then(res => console.log(res))
+          .then(res => window.location.reload(true))
           .catch(res => {
             setError({ err: res.error });
           });
       }
     } else
       authenticateAsync(authDetails, 'signin')
-        .then(res => console.log(res))
+        .then(res => window.location.reload(true))
         .catch(res => setError({ err: res.error }));
   };
 

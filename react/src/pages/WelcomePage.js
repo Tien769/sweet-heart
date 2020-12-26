@@ -1,5 +1,5 @@
 // Lib imports
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ProductCard } from '../components/ProductCard';
 import { getAllProductsAsync, getCartItems, searchProductAsync } from '../lib/backendService';
 // Style and asset import

@@ -7,14 +7,16 @@
 body {
   margin: 0px;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Slab' !important;
   min-height: 100vh;
-  background-color: bisque !important;
+  background-color: #ffe8cc !important;
   position: relative;
 }
 
 #App {
   padding: 0em 15%;
+  padding-top: 6em;
+  margin-bottom: 40vh;
 
   #PageContent {
     margin-top: 1em;
@@ -35,12 +37,18 @@ body {
 
 @media all and(max-width: 1280px) {
   #App {
-    padding: 0em 10%;
+    padding: 8em 10%;
   }
 }
 
 @media all and(max-width: 900px) {
   #App {
-    padding: 0em;
+    padding: 8em 1em;
+  }
+}
+
+@media all and(max-width: 670px) {
+  #App {
+    padding: 15em 1em;
   }
 }

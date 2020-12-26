@@ -3,7 +3,7 @@ import { addCartItem, getProductImageUrl } from '../lib/backendService';
 import styles from './ProductCard.module.scss';
 
 // Trim long product names
-const trimProductName = prodName => {
+export const trimProductName = prodName => {
   if (typeof prodName == 'string') {
     let words = prodName.split(' ');
     if (words.length > 3) {
@@ -14,7 +14,8 @@ const trimProductName = prodName => {
 };
 
 // Format price value
-const formatPrice = prodPrice => {
+export const formatPrice = prodPrice => {
+  if (prodPrice === 0) return prodPrice;
   let formatPrice = String(prodPrice);
   formatPrice =
     formatPrice.slice(0, formatPrice.length - 3) + ',' + formatPrice.slice(formatPrice.length - 3);
@@ -34,9 +35,10 @@ const MainComponent = props => {
   const addToCart = () => {
     if (!added) setAdded(true);
     ref.current.className = `${styles.plusOne} ${styles.show}`;
-    setTimeout(() => {
-      ref.current.className = `${styles.plusOne}`;
-    }, 1000);
+    if (!ref.current)
+      setTimeout(() => {
+        ref.current.className = `${styles.plusOne}`;
+      }, 1000);
 
     addCartItem(props.prod).then(_ => {
       props.updateCart();
