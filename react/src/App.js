@@ -4,7 +4,8 @@ import { checkAuthenticationAsync } from './lib/backendService';
 import NavBar from './components/NavBar';
 //import ConTract from './components/ConTract';
 //import HelpOne from './components/HelpOne';
-import HelpTwo from './components/HelpTwo';
+//import HelpTwo from './components/HelpTwo';
+import HelpThree from './components/HelpThree';
 
 function App() {
   const [authStatus, setAuthStatus] = useState(undefined);
@@ -18,7 +19,7 @@ function App() {
   return (
     <div id={style.App}>
       <NavBar/>
-      <HelpTwo/>
+      <HelpThree/>
     </div>
   );
 }
