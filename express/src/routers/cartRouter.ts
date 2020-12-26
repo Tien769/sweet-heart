@@ -46,7 +46,7 @@ router.post('/quantity', (req, res, next) => {
   if (Array.isArray(sessionCart)) {
     sessionCart.forEach(item => {
       if (item.product_id === req.body.prod.product_id) {
-        item.quantity = req.body.prod.quantity;
+        item.quantity = req.body.quantity;
       }
     });
   }
@@ -57,7 +57,6 @@ router.post('/quantity', (req, res, next) => {
 
 router.post('/remove', (req, res, next) => {
   let sessionCart = (req.session as PlainObject).cart;
-  console.log(sessionCart);
   if (Array.isArray(sessionCart)) {
     for (let i = 0; i < sessionCart.length; i++) {
       if (sessionCart[i].product_id === req.body.prod.product_id) {
@@ -67,6 +66,7 @@ router.post('/remove', (req, res, next) => {
     }
   }
   (req.session as PlainObject).cart = sessionCart;
+  res.locals.msg = new ResponseMessage(200, { cart: sessionCart });
   return next();
 });
 
