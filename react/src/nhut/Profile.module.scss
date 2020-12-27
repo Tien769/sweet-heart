@@ -1,0 +1,124 @@
+@import '../variables';
+
+#AuthForm {
+  margin-top: 32px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#AuthForm > form {
+  background-color: #fff;
+  padding: 2em 2em;
+  flex-basis: 40%;
+
+  #FormTitle {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: 2px 0px 1px;
+    margin-bottom: 2em;
+  }
+
+  input,
+  button {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+#AuthForm > form {
+  display: block;
+  width: 400px;
+  margin-bottom: 15px;
+  box-shadow: 1px 1px 2px;
+
+  display: block;
+  position: relative;
+  text-align: center;
+  border: 1px solid $base-2;
+
+  .field {
+    display: block;
+    width: 100%;
+    margin-top: 1.5em;
+
+    label {
+      text-align: left;
+      display: block;
+      color: #666;
+      font-size: 1.2rem;
+      margin-bottom: 0.25em;
+      transition: 0.4s;
+    }
+
+    &:focus-within label {
+      color: $highlight;
+      font-weight: 700;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px 15px;
+      background-color: darken($color: white, $amount: 10);
+      box-shadow: 1px 1px 1px;
+      border-radius: 8px;
+      transition: 0.4s;
+    }
+  }
+
+  input[type='submit'] {
+    padding: 16px 32px;
+    // background-image: linear-gradient(to right, #ff4646 50%, #fe4880);
+    background-color: $base-2;
+    background-size: 200%;
+    background-position: 0%;
+    transition: 0.4s;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 3em;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten($color: $base-2, $amount: 5);
+    }
+  }
+
+  .switchForm {
+    margin: 16px;
+
+    button {
+      margin: 0;
+      margin-left: 1em;
+      font-weight: 700;
+      font-size: 1.025rem;
+      padding: 0;
+      border: none;
+      background: none;
+      color: lighten($color: $base-2, $amount: 20);
+    }
+  }
+}
+
+#AuthForm > form {
+  .validError {
+    color: red;
+    margin-top: 0.5em;
+    text-align: right;
+    font-style: italic;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .error {
+    color: red;
+    font-weight: 700;
+  }
+}
