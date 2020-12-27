@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { NavBar } from './components/NavBar';
 import './App.scss';
-import { WelcomePage } from './pages/WelcomePage';
+// import { WelcomePage } from './pages/WelcomePage';
 import { PageChangerContext } from './_contexts';
 import Footer from './components/Footer';
+import { WelcomePage } from './pages/WelcomePage';
 
 function App() {
   const [page, setPage] = useState(<WelcomePage />);

@@ -11,6 +11,10 @@ body {
   min-height: 100vh;
   background-color: #ffe8cc !important;
   position: relative;
+  button,
+  input[type='submit'] {
+    cursor: pointer;
+  }
 }
 
 #App {

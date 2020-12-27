@@ -98,3 +98,57 @@ export const setCartItemQuantity = async (prod, quantity) =>
     },
     body: JSON.stringify({ prod: prod, quantity: quantity }),
   });
+
+export const getAllOrders = async () =>
+  fetch(`${process.env.REACT_APP_API_SERVER}/order`)
+    .then(res => res.json())
+    .then(res => (res.error ? Promise.reject(res) : res));
+
+export const addProduct = async (prod, img) => {
+  const file = new FormData();
+  file.append('img', img);
+  file.append('prod', JSON.stringify(prod));
+
+  return fetch(`${process.env.REACT_APP_API_SERVER}/prod/add`, {
+    method: 'POST',
+    body: file,
+  })
+    .then(res => res.json())
+    .then(res => (res.error ? Promise.reject(res) : res));
+};
+
+export const removeProduct = async prod =>
+  fetch(`${process.env.REACT_APP_API_SERVER}/prod/remove`, {
+    credentials: 'include',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(prod),
+  })
+    .then(res => res.json())
+    .then(res => (res.error ? Promise.reject(res) : res));
+
+export const getProduct = async id =>
+  fetch(`${process.env.REACT_APP_API_SERVER}/prod/get`, {
+    credentials: 'include',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ productId: id }),
+  })
+    .then(res => res.json())
+    .then(res => (res.error ? Promise.reject(res) : res));
+
+export const removeOrder = async id =>
+  fetch(`${process.env.REACT_APP_API_SERVER}/order/remove`, {
+    credentials: 'include',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ orderId: id }),
+  })
+    .then(res => res.json())
+    .then(res => (res.error ? Promise.reject(res) : res));

@@ -14,6 +14,7 @@ import { AuthenticationPage } from '../pages/AuthenticationPage';
 import { TermsOfServicePage } from '../pages/TermsOfServicePage';
 import { ContactPage } from '../pages/ContactPage';
 import { CartPage } from '../pages/CartPage';
+import { AdminPage } from '../pages/AdminPage';
 
 const MainComponent = () => {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -62,6 +63,9 @@ const MainComponent = () => {
         </div>
         <div>
           <button onClick={() => changePage(<ContactPage />)}>Liên hệ</button>
+        </div>
+        <div>
+          <button onClick={() => changePage(<AdminPage />)}>Admin</button>
         </div>
       </div>
       <div id={styles.SearchBar}>

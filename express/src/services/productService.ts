@@ -1,4 +1,4 @@
-import { ResponseMessage } from '../_types';
+import { PlainObject, ResponseMessage } from '../_types';
 import Database from './database';
 
 interface Product {
@@ -24,6 +24,12 @@ export const getAllProducts = (callback: (err: any, list?: Array<Product>) => vo
   });
 };
 
+export const getProduct = (product_id: any, callback: (err: any, prod?: Product) => void) => {
+  Database.all('SELECT * FROM products WHERE product_id=?', [product_id], (err, result) => {
+    callback(err, result[0]);
+  });
+};
+
 export const searchProducts = (
   queryOption: QueryOption,
   callback: (err: any, list?: Array<Product>) => void
@@ -37,6 +43,26 @@ export const searchProducts = (
       else return callback(undefined, rows);
     });
   });
+};
+
+export const addProduct = (prod: PlainObject, callback: (err: any, id: number) => void) => {
+  Database.serialize(() => {
+    Database.all('SELECT COUNT(product_id) FROM products', [], (err, result) => {
+      if (err) console.log(err);
+      const prodId = result[0]['COUNT(product_id)'];
+
+      Database.run(
+        'INSERT INTO products(product_id,type,name,price,img) VALUES(?,?,?,?,?)',
+        [prodId + 1, prod.type, prod.name, prod.price, String(prodId + 1)],
+        err => (err ? console.log(err) : callback(undefined, prodId + 1))
+      );
+    });
+  });
+};
+
+export const removeProduct = (id: number, callback: (err: any) => void) => {
+  console.log(id);
+  Database.run('DELETE FROM products WHERE product_id=?', [id], err => callback(err));
 };
 
 // ----------------------------------------UTILS----------------------------------------

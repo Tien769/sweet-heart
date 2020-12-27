@@ -291,13 +291,6 @@ const Page = () => {
       total: getPurchaseTotal(purchaseList),
     };
 
-    //
-    // Call api here to update database and session cart
-    //
-    // purchaseList.forEach(i => {
-    //   removeCartItem(i);
-    // });
-
     emptyCart();
 
     fetch(`${process.env.REACT_APP_API_SERVER}/order/store`, {

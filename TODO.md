@@ -16,16 +16,16 @@ Hiện tại trang web đã hoàn thành xong:
 
 - Hoàn thành chức năng lưu trữ thông tin hóa đơn ở server.
 
+- Xây dựng trang admin.
+
 ## 2. Cần làm (sắp xếp theo ưu tiên)
 
 - Trang kết quả tìm kiếm
-
-- Xây dựng trang admin.
 
 - Hoàn thành trang profile cá nhân (bao gồm hiển thị thông tin và cập nhật thông tin).
 
 - Kiểm thử và sửa các bug còn tồn tại (danh sách bên dưới).
 
-## 3. Danh sách bug
+## 3. Danh sách bug (cập nhật thường xuyên)
 
-Chờ bổ sung
+- Trang Admin: khi thêm hoặc xóa dữ liệu ở server, state ở frontend chưa được cập nhật trừ khi refresh trang.

@@ -2,6 +2,7 @@ import express from 'express';
 import sessionManager from './services/sessionManager';
 import cors from './services/cors';
 import compression from 'compression';
+import fileupload from 'express-fileupload';
 import { authRouter } from './routers/authRouter';
 import { productRouter } from './routers/productRouters';
 import { ResponseMessage } from './_types';
@@ -9,6 +10,7 @@ import { cartRouter } from './routers/cartRouter';
 import { orderRouter } from './routers/orderRouter';
 const app = express();
 
+app.use(fileupload());
 app.use(compression());
 app.use(cors);
 app.use(sessionManager);

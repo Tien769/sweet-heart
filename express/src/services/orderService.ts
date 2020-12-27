@@ -11,20 +11,14 @@ export const addOrder = (
 ) => {
   Database.serialize(() => {
     const order_id = generateOrderId();
-    Database.all('SELECT account_id FROM accounts WHERE email=?', [user.email], (err, result) => {
-      if (err) callback(new ResponseMessage(500, { error: 'INTERNAL ERROR', detail: err }));
-      if (result.length === 0)
-        return callback(new ResponseMessage(500, { error: 'FOUND NOW MATCHING EMAIL' }));
 
-      const account_id = result[0].account_id;
-      Database.run(
-        'INSERT INTO orders(order_id,account_id,total) VALUES(?,?,?)',
-        [order_id, account_id, total],
-        err => {
-          return callback(new ResponseMessage(500, { error: 'INTERNAL ERROR', detail: err }));
-        }
-      );
-    });
+    Database.run(
+      'INSERT INTO orders(order_id,email,total) VALUES(?,?,?)',
+      [order_id, user.email, total],
+      err => {
+        return callback(new ResponseMessage(500, { error: 'INTERNAL ERROR', detail: err }));
+      }
+    );
 
     items.forEach(item => {
       Database.run(
@@ -56,33 +50,30 @@ export const getAllOrders = (
 
       for (let i = 0; i < result.length; i++) {
         const o = result[i];
-        let mail = '';
-        Database.serialize(() => {
-          Database.all(
-            'SELECT email FROM accounts WHERE account_id=?',
-            [o.account_id],
-            (err, userResult) => {
-              if (err)
-                return callback(new ResponseMessage(500, { error: 'INTERNAL ERROR', detail: err }));
-              mail = userResult[0].email;
-              data[i] = { ...data[i], user: mail };
-            }
-          );
-
-          Database.all(
-            'SELECT product_id,quantity FROM orders_products WHERE order_id=?',
-            [o.order_id],
-            (err, prodResult) => {
-              if (err)
-                return callback(new ResponseMessage(500, { error: 'INTERNAL ERROR', detail: err }));
-              data[i] = { ...data[i], items: prodResult };
-              if (i === result.length - 1)
-                return callback(undefined, new ResponseMessage(200, { orders: data }));
-            }
-          );
-        });
+        Database.all(
+          'SELECT product_id,quantity FROM orders_products WHERE order_id=?',
+          [o.order_id],
+          (err, prodResult) => {
+            if (err)
+              return callback(new ResponseMessage(500, { error: 'INTERNAL ERROR', detail: err }));
+            data[i] = { ...data[i], detail: o, items: prodResult };
+            if (i === result.length - 1)
+              return callback(undefined, new ResponseMessage(200, { orders: data }));
+          }
+        );
       }
     });
   });
 };
+
+export const removeOrder = (id: any, callback: (err: any) => void) => {
+  Database.serialize(() => {
+    Database.run('DELETE FROM orders_products WHERE order_id=?', [id], err => {
+      if (err) callback(err);
+    });
+
+    Database.run('DELETE FROM orders WHERE order_id=?', [id], err => callback(err));
+  });
+};
+
 const generateOrderId = () => `ord-${v4()}`;
