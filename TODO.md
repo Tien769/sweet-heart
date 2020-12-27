@@ -12,11 +12,13 @@ Hiện tại trang web đã hoàn thành xong:
 
 - Các trang hỗ trợ (liên hệ, điều khoản).
 
-- Trang thanh toán và giỏ hàng (phần lưu trữ thông tin hóa đơn và csdl chưa thực hiện.
+- Trang thanh toán và giỏ hàng (phần lưu trữ thông tin hóa đơn và csdl chưa thực hiện).
 
 - Hoàn thành chức năng lưu trữ thông tin hóa đơn ở server.
 
 ## 2. Cần làm (sắp xếp theo ưu tiên)
+
+- Trang kết quả tìm kiếm
 
 - Xây dựng trang admin.
 
@@ -24,6 +26,6 @@ Hiện tại trang web đã hoàn thành xong:
 
 - Kiểm thử và sửa các bug còn tồn tại (danh sách bên dưới).
 
-## 3. Danh sách bureloadg
+## 3. Danh sách bug
 
 Chờ bổ sung
