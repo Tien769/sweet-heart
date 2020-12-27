@@ -11,14 +11,16 @@ export default function ProductDetail(pro) {
    * 
    */
 
+  const [product, setProduct] = useState(pro);
 
 
-  const [product, setProduct] = useState({});
+  // test - lấy thử sản phẩm
+  const pos = 2;
   useEffect(() => {
     getAllProductsAsync()
       .then(res => res.product_list)
       .then(list => {
-        setProduct(list[3]);
+        setProduct(list[pos]);
       });
   }, [product])
 
