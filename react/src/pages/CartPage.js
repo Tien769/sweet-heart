@@ -1,16 +1,15 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useWarning } from '../components/Warning';
-import { PageChangerContext } from '../_contexts';
 import styles from './CartPage.module.scss';
 import {
   checkAuthenticationAsync,
+  emptyCart,
   getCartItems,
   getProductImageUrl,
   removeCartItem,
   setCartItemQuantity,
 } from '../lib/backendService';
 import { formatPrice } from '../components/ProductCard';
-import { WelcomePage } from './WelcomePage';
 
 const getPurchaseTotal = itemList => {
   if (Array.isArray(itemList)) {
@@ -288,19 +287,32 @@ const Page = () => {
   const checkOut = () => {
     const order = {
       user: currentUser,
-      products: purchaseList,
+      items: purchaseList,
+      total: getPurchaseTotal(purchaseList),
     };
-    console.log(order);
 
     //
     // Call api here to update database and session cart
     //
-    purchaseList.forEach(i => removeCartItem(i));
+    // purchaseList.forEach(i => {
+    //   removeCartItem(i);
+    // });
+
+    emptyCart();
+
+    fetch(`${process.env.REACT_APP_API_SERVER}/order/store`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(order),
+    });
 
     setPaymentPage('Done');
     setTimeout(() => {
       window.location.reload(true);
-    }, 2000);
+    }, 3000);
   };
 
   return (

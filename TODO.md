@@ -14,9 +14,9 @@ Hiện tại trang web đã hoàn thành xong:
 
 - Trang thanh toán và giỏ hàng (phần lưu trữ thông tin hóa đơn và csdl chưa thực hiện.
 
-## 2. Cần làm (sắp xếp theo ưu tiên)
-
 - Hoàn thành chức năng lưu trữ thông tin hóa đơn ở server.
+
+## 2. Cần làm (sắp xếp theo ưu tiên)
 
 - Xây dựng trang admin.
 

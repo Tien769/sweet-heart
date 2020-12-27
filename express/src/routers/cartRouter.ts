@@ -57,16 +57,14 @@ router.post('/quantity', (req, res, next) => {
 
 router.post('/remove', (req, res, next) => {
   let sessionCart = (req.session as PlainObject).cart;
+  console.log(sessionCart.length);
   if (Array.isArray(sessionCart)) {
-    for (let i = 0; i < sessionCart.length; i++) {
-      if (sessionCart[i].product_id === req.body.prod.product_id) {
-        sessionCart.splice(i, 1);
-        break;
-      }
-    }
+    (req.session as PlainObject).cart = sessionCart.filter(
+      i => i.product_id !== req.body.prod.product_id
+    );
   }
-  (req.session as PlainObject).cart = sessionCart;
-  res.locals.msg = new ResponseMessage(200, { cart: sessionCart });
+  console.log((req.session as PlainObject).cart.length);
+  res.locals.msg = new ResponseMessage(200, { cart: (req.session as PlainObject).cart });
   return next();
 });
 

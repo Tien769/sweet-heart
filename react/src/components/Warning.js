@@ -8,10 +8,6 @@ const WarningWindow = ({ warningText, visible }) => {
     setVisible(visible);
   }, [visible]);
 
-  useEffect(() => {
-    console.log(visibility);
-  }, [visibility]);
-
   return (
     <>
       <div id={styles.Warning} className={visibility ? styles.show : ''} />
